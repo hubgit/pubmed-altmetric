@@ -11,6 +11,7 @@ function run() {
 		}
 
 		journalNode.style.display = 'none';
+		journalNode.nextSibling.textContent = journalNode.nextSibling.textContent.replace(/^\s*\.\s*/, '');
 
 		var matches = node.textContent.match(/PMID:\s*(\d+)/);
 
@@ -37,7 +38,7 @@ function lookup(pmid, journalNode) {
 				var a = document.createElement('a');
 				a.setAttribute('href', data.details_url);
 				a.setAttribute('target', '_blank');
-				a.style.display = 'inline-block';
+				a.style.display = 'block';
 
 				var image = document.createElement('img');
 				image.setAttribute('src', url);
