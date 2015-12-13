@@ -23,7 +23,13 @@ function run() {
 }
 
 function lookup(pmid, journalNode) {
-	fetch('https://api.altmetric.com/v1/pmid/' + pmid).then(function(response) {
+	var url = 'https://api.altmetric.com/v1/pmid/' + pmid;
+
+	var request = new Request(url, {
+		referrer: 'http://www.ncbi.nlm.nih.gov/pubmed/'
+	});
+
+	fetch(request).then(function(response) {
 		if (response.ok) {
 			response.json().then(function(data) {
 				var url = 'https://d1uo4w7k31k5mn.cloudfront.net/v2/' + Math.round(data.score) + '.png';
